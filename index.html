@@ -1056,6 +1056,10 @@ function rowsFromNews(j){
     p = j[k];
     t = plain(p.title && p.title.rendered);
     if(!t) continue;
+    /* Website conventions that read as noise on a wall. A headline is a
+       headline; nobody in a hallway is about to click a video. */
+    t = t.replace(/^(VIDEO|PHOTOS?|WATCH|LISTEN|GALLERY)\s*:\s*/i, "");
+    t = t.replace(/\s*[,:]\s*$/, "");
     /* skip the evergreen programme pages the search turns up */
     if(/^(Graduate Certificates|National Scholarships and Fellowships)$/i.test(t)) continue;
     rows.push(stampDate(p.date) + "|" + t + "|");
