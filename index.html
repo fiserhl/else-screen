@@ -1050,21 +1050,37 @@ function rowsFromCalendar(j){
   return rows;
 }
 function rowsFromNews(j){
-  var rows = [], k, p, t;
+  var rows = [], k, p, t, age, fresh = [], all = [];
   if(!j || !j.length) return rows;
-  for(k = 0; k < j.length && rows.length < 4; k++){
+  var now = new Date().getTime(), DAY = 86400000;
+
+  for(k = 0; k < j.length; k++){
     p = j[k];
     t = plain(p.title && p.title.rendered);
     if(!t) continue;
-    /* Website conventions that read as noise on a wall. A headline is a
-       headline; nobody in a hallway is about to click a video. */
-    t = t.replace(/^(VIDEO|PHOTOS?|WATCH|LISTEN|GALLERY)\s*:\s*/i, "");
-    t = t.replace(/\s*[,:]\s*$/, "");
-    /* skip the evergreen programme pages the search turns up */
+
+    /* Skip video and photo posts outright rather than tidying their titles.
+       A wall cannot play a video, and stripping the prefix leaves a headline
+       that is not a sentence: "Summer Interns 2026 Christian Gray" tells a
+       passer-by nothing. Better to show one fewer story than a dead end. */
+    if(/^(VIDEO|PHOTOS?|WATCH|LISTEN|GALLERY|SLIDESHOW)\s*[:\-]/i.test(t)) continue;
+
+    /* Skip the evergreen programme pages the search turns up. */
     if(/^(Graduate Certificates|National Scholarships and Fellowships)$/i.test(t)) continue;
-    rows.push(stampDate(p.date) + "|" + t + "|");
+
+    t = trim(t.replace(/\s*[,:;\-]\s*$/, ""));
+    if(!t) continue;
+
+    var row = stampDate(p.date) + "|" + t + "|";
+    all.push(row);
+    age = (now - new Date(p.date).getTime()) / DAY;
+    if(age <= 180) fresh.push(row);
   }
-  return rows;
+
+  /* Prefer stories from the last six months. If the college has been quiet,
+     fall back to whatever exists rather than showing an empty card. */
+  rows = (fresh.length >= 2) ? fresh : all;
+  return rows.slice(0, 4);
 }
 
 /* ============================================================
