@@ -96,7 +96,8 @@ body{
   transition:opacity .62s ease;
   display:flex;flex-direction:column;justify-content:center;
 }
-.slideIn{width:100%;transform-origin:50% 50%;}
+.slideIn{width:100%;transform-origin:0 50%;}   /* shrink toward the left margin,
+   not the centre, so a scaled slide keeps the same left edge as an unscaled one */
 .slide[data-local-on="1"]{opacity:1;visibility:visible;z-index:20;}
 
 /* staggered entrance on the active slide */
@@ -351,7 +352,7 @@ body.editing #editBtn{display:none;}
   display:none;
 }
 body.tickerOn #tick{display:block;}
-body.tickerOn .slide{padding-bottom:272px;}
+body.tickerOn .slide{padding-top:170px;padding-bottom:272px;}
 body.tickerOn #editBtn{bottom:calc(26px + 21vh);}
 #tickHead{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 18px 0;}
 #tickLab{font-size:20px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E84B8A;}
@@ -613,10 +614,20 @@ function fitText(el){
   var inner = el.getElementsByClassName("slideIn")[0];
   if(!inner) return;
   inner.style.transform = "";
-  var room = 1080 - 280;                       /* stage height less padding */
+  /* Room is the stage height less THIS slide's own padding. It was hardcoded
+     at 1080-280 until the ticker band changed the bottom padding; a stale
+     number here lets tall copy overflow a centred flex box upward and collide
+     with the logo. Read the padding rather than assuming it. */
+  var padT = 150, padB = 130;
+  if(window.getComputedStyle){
+    var cs = getComputedStyle(el);
+    padT = parseFloat(cs.paddingTop) || padT;
+    padB = parseFloat(cs.paddingBottom) || padB;
+  }
+  var room = 1080 - padT - padB;
   var h = inner.offsetHeight;
   if(h > room){
-    var k = Math.max(0.55, room / h);
+    var k = Math.max(0.5, room / h);
     inner.style.transform = "scale(" + k + ")";
   }
 }
