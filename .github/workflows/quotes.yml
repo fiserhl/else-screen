@@ -47,4 +47,6 @@ jobs:
             exit 0
           fi
           git commit -m "quotes: $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git push
+          # Two runs close together race each other to push. Rebase and retry
+          # rather than failing the job and leaving the board un-refreshed.
+          git push || { git pull --rebase --autostash && git push; }
