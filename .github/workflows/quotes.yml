@@ -1,0 +1,40 @@
+name: quotes
+
+# Weekdays only, roughly 8am to 4pm Central across both CST and CDT.
+# Every 20 minutes. Eighteen symbols per run, one credit each, lands near
+# 490 of the 800 daily credits on the Twelve Data Basic plan. Nothing runs
+# overnight or at weekends, which is what keeps it inside the free tier.
+on:
+  schedule:
+    - cron: '*/20 13-21 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quotes
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch quotes
+        env:
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
+        run: python3 scripts/fetch_quotes.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- quotes.json; then
+            echo "no change"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quotes.json
+          git commit -m "quotes: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
