@@ -17,16 +17,20 @@ if not KEY:
     sys.exit("TWELVE_DATA_KEY is not set")
 
 OUT = "quotes.json"
-CHUNK = 6
-GAP_SECONDS = 21
+CHUNK = 4
+GAP_SECONDS = 65
 MAX_SPARK = 14
 
+# The Twelve Data Basic plan does not carry index symbols (GSPC, DJI, IXIC,
+# RUT all came back empty on 26 Aug 2026), so the index page uses the ETF
+# proxies and says so. FALLBACK_INDEXES holds the real symbols in case the
+# plan is ever upgraded; swap the two lists if that happens.
 GROUPS = [
-    ("indexes",     "Major Indexes",          ["GSPC", "DJI", "IXIC", "RUT"]),
+    ("indexes",     "Major Indexes",          ["SPY", "DIA", "QQQ", "IWM"]),
     ("mississippi", "Mississippi & Regional", ["CALM", "TRMK", "HWC", "ETR", "SO", "FDX"]),
     ("active",      "Most Active",            ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "JPM", "WMT", "CAT"]),
 ]
-FALLBACK_INDEXES = ["SPY", "DIA", "QQQ", "IWM"]
+FALLBACK_INDEXES = ["GSPC", "DJI", "IXIC", "RUT"]
 
 NAMES = {
     "GSPC": "S&P 500", "DJI": "Dow Jones", "IXIC": "Nasdaq", "RUT": "Russell 2000",
@@ -98,12 +102,12 @@ def main():
     for key, label, symbols in GROUPS:
         bag = quotes_for(symbols)
         rows = [r for r in (row_from(s, bag.get(s)) for s in symbols) if r]
-        proxy = False
+        proxy = (key == "indexes")
         if key == "indexes" and not rows:
-            print("index symbols unavailable, falling back to ETF proxies", file=sys.stderr)
+            print("ETF proxies unavailable, trying real index symbols", file=sys.stderr)
             bag = quotes_for(FALLBACK_INDEXES)
             rows = [r for r in (row_from(s, bag.get(s)) for s in FALLBACK_INDEXES) if r]
-            proxy = True
+            proxy = False
         if not rows:
             print("group %s produced nothing, keeping previous" % key, file=sys.stderr)
             old = next((g for g in prev.get("groups", []) if g.get("key") == key), None)
