@@ -337,24 +337,25 @@ body.editing #editBtn{display:none;}
    in the monochrome case. Lives inside #stage, so pixel shift moves it
    with everything else and no static edge burns into the panel. */
 #tick{
-  left:0;right:0;bottom:5px;height:196px;z-index:42;
+  left:0;right:0;bottom:5px;height:220px;z-index:42;
   background:rgba(19,11,52,.94);
   border-top:1px solid rgba(199,191,230,.16);
   padding:24px 96px 22px 96px;
   display:none;
 }
 body.tickerOn #tick{display:block;}
-body.tickerOn .slide{padding-bottom:252px;}
+body.tickerOn .slide{padding-bottom:272px;}
+body.tickerOn #editBtn{bottom:calc(26px + 21vh);}
 #tickHead{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 18px 0;}
 #tickLab{font-size:20px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);}
 #tickMeta{font-size:18px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-dim);}
 #tickRow{display:flex;}
 .tk{flex:1 1 0;min-width:0;margin-left:64px;padding-left:30px;border-left:1px solid rgba(199,191,230,.15);}
 .tk:first-child{margin-left:0;padding-left:0;border-left:0;}
-.tkName{font-size:19px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lav-dim);
+.tkName{font-size:18px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lav-dim);
   margin:0 0 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .tkLine{display:flex;align-items:baseline;}
-.tkPx{font-size:52px;font-weight:600;color:var(--white);letter-spacing:-.01em;
+.tkPx{font-size:44px;font-weight:600;color:var(--white);letter-spacing:-.01em;
   font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;}
 .tkCh{font-size:24px;font-weight:700;margin-left:16px;white-space:nowrap;
   font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;}
@@ -362,7 +363,7 @@ body.tickerOn .slide{padding-bottom:252px;}
 .tkDn{color:#F5A3A9;}
 .tkFl{color:var(--lav);}
 .tkArw{font-size:19px;margin-right:4px;}
-.tkSpark{height:34px;margin-top:8px;}
+.tkSpark{height:28px;margin-top:8px;}
 .tkSpark svg{width:100%;height:100%;display:block;}
 </style>
 
