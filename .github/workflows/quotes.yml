@@ -11,6 +11,11 @@ on:
     # that crush. 7/27/47 is still every twenty minutes, just off the peak.
     - cron: '7,27,47 13-21 * * 1-5'
   workflow_dispatch:
+  # Out-of-band trigger. GitHub's own scheduler is unreliable, so anything
+  # holding a token with Contents write can POST to /dispatches and force a
+  # refresh without needing the Actions permission.
+  repository_dispatch:
+    types: [refresh-quotes]
 
 permissions:
   contents: write
