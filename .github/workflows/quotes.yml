@@ -29,12 +29,14 @@ jobs:
 
       - name: Commit if changed
         run: |
-          if git diff --quiet -- quotes.json; then
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # stage first: on the very first run quotes.json is untracked, and
+          # git diff does not see untracked files.
+          git add quotes.json
+          if git diff --cached --quiet; then
             echo "no change"
             exit 0
           fi
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add quotes.json
           git commit -m "quotes: $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
