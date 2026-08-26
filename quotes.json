@@ -1,0 +1,173 @@
+{
+ "updated": "2026-08-26T16:12:04Z",
+ "marketOpen": true,
+ "delayNote": "Delayed 15 min",
+ "source": "Twelve Data",
+ "groups": [
+  {
+   "key": "indexes",
+   "label": "Major Indexes",
+   "proxy": true,
+   "rows": [
+    {
+     "symbol": "SPY",
+     "name": "S&P 500 ETF",
+     "price": "765.16",
+     "change": "-0.75",
+     "percent": "-0.10",
+     "dir": -1,
+     "marketOpen": true,
+     "spark": [
+      765.16
+     ]
+    },
+    {
+     "symbol": "DIA",
+     "name": "Dow ETF",
+     "price": "534.25",
+     "change": "-0.99",
+     "percent": "-0.19",
+     "dir": -1,
+     "marketOpen": true,
+     "spark": [
+      534.25
+     ]
+    },
+    {
+     "symbol": "QQQ",
+     "name": "Nasdaq 100 ETF",
+     "price": "709.22",
+     "change": "-1.50",
+     "percent": "-0.21",
+     "dir": -1,
+     "marketOpen": true,
+     "spark": [
+      709.22
+     ]
+    },
+    {
+     "symbol": "IWM",
+     "name": "Russell 2000 ETF",
+     "price": "298.44",
+     "change": "-0.80",
+     "percent": "-0.27",
+     "dir": -1,
+     "marketOpen": true,
+     "spark": [
+      298.44
+     ]
+    }
+   ]
+  },
+  {
+   "key": "mississippi",
+   "label": "Mississippi & Regional",
+   "proxy": false,
+   "rows": [
+    {
+     "symbol": "CALM",
+     "name": "Cal-Maine Foods",
+     "price": "83.84",
+     "change": "-0.30",
+     "percent": "-0.36",
+     "dir": -1,
+     "marketOpen": true,
+     "spark": [
+      83.84
+     ]
+    },
+    {
+     "symbol": "TRMK",
+     "name": "Trustmark",
+     "price": "46.25",
+     "change": "0.14",
+     "percent": "0.30",
+     "dir": 1,
+     "marketOpen": true,
+     "spark": [
+      46.25
+     ]
+    },
+    {
+     "symbol": "HWC",
+     "name": "Hancock Whitney",
+     "price": "75.22",
+     "change": "0.56",
+     "percent": "0.75",
+     "dir": 1,
+     "marketOpen": true,
+     "spark": [
+      75.22
+     ]
+    },
+    {
+     "symbol": "ETR",
+     "name": "Entergy",
+     "price": "107.09",
+     "change": "0.85",
+     "percent": "0.80",
+     "dir": 1,
+     "marketOpen": true,
+     "spark": [
+      107.09
+     ]
+    },
+    {
+     "symbol": "SO",
+     "name": "Southern Company",
+     "price": "90.02",
+     "change": "0.05",
+     "percent": "0.06",
+     "dir": 1,
+     "marketOpen": true,
+     "spark": [
+      90.02
+     ]
+    },
+    {
+     "symbol": "FDX",
+     "name": "FedEx",
+     "price": "340.27",
+     "change": "6.56",
+     "percent": "1.97",
+     "dir": 1,
+     "marketOpen": true,
+     "spark": [
+      340.27
+     ]
+    }
+   ]
+  },
+  {
+   "key": "active",
+   "label": "Most Active",
+   "proxy": false,
+   "rows": [
+    {
+     "symbol": "WMT",
+     "name": "Walmart",
+     "price": "104.39",
+     "change": "-0.99",
+     "percent": "-0.94",
+     "dir": -1,
+     "marketOpen": true,
+     "spark": [
+      104.39
+     ]
+    },
+    {
+     "symbol": "CAT",
+     "name": "Caterpillar",
+     "price": "819.33",
+     "change": "8.04",
+     "percent": "0.99",
+     "dir": 1,
+     "marketOpen": true,
+     "spark": [
+      819.33
+     ]
+    }
+   ]
+  }
+ ]
+}
