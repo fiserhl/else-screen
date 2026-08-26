@@ -6,7 +6,10 @@ name: quotes
 # overnight or at weekends, which is what keeps it inside the free tier.
 on:
   schedule:
-    - cron: '*/20 13-21 * * 1-5'
+    # Odd minutes on purpose. GitHub queues every repo's :00, :15, :30 and
+    # :45 jobs at once, and scheduled runs get dropped or badly delayed in
+    # that crush. 7/27/47 is still every twenty minutes, just off the peak.
+    - cron: '7,27,47 13-21 * * 1-5'
   workflow_dispatch:
 
 permissions:
