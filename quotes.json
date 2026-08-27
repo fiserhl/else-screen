@@ -1,6 +1,6 @@
 {
- "updated": "2026-08-26T22:26:45Z",
- "marketOpen": false,
+ "updated": "2026-08-27T18:16:49Z",
+ "marketOpen": true,
  "delayNote": "Delayed 15 min",
  "source": "Twelve Data",
  "groups": [
@@ -12,11 +12,11 @@
     {
      "symbol": "SPY",
      "name": "S&P 500 ETF",
-     "price": "766.08",
-     "change": "0.17",
-     "percent": "0.02",
+     "price": "770.46",
+     "change": "4.38",
+     "percent": "0.57",
      "dir": 1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       765.16,
       765.22,
@@ -24,17 +24,18 @@
       765.5,
       765.75,
       766.87,
-      766.08
+      766.08,
+      770.46
      ]
     },
     {
      "symbol": "DIA",
      "name": "Dow ETF",
-     "price": "534.23",
-     "change": "-1.01",
-     "percent": "-0.19",
-     "dir": -1,
-     "marketOpen": false,
+     "price": "535.16",
+     "change": "0.93",
+     "percent": "0.17",
+     "dir": 1,
+     "marketOpen": true,
      "spark": [
       534.25,
       534.25,
@@ -42,17 +43,18 @@
       534.08,
       533.96,
       534.46,
-      534.23
+      534.23,
+      535.16
      ]
     },
     {
      "symbol": "QQQ",
      "name": "Nasdaq 100 ETF",
-     "price": "711.37",
-     "change": "0.65",
-     "percent": "0.09",
+     "price": "718.44",
+     "change": "7.07",
+     "percent": "0.99",
      "dir": 1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       709.22,
       709.29,
@@ -60,17 +62,18 @@
       710.67,
       711.14,
       712.21,
-      711.37
+      711.37,
+      718.44
      ]
     },
     {
      "symbol": "IWM",
      "name": "Russell 2000 ETF",
-     "price": "298.93",
-     "change": "-0.30",
-     "percent": "-0.10",
-     "dir": -1,
-     "marketOpen": false,
+     "price": "299.47",
+     "change": "0.54",
+     "percent": "0.18",
+     "dir": 1,
+     "marketOpen": true,
      "spark": [
       298.44,
       298.48,
@@ -78,7 +81,8 @@
       298.76,
       299.03,
       299.1,
-      298.93
+      298.93,
+      299.47
      ]
     }
    ]
@@ -91,11 +95,11 @@
     {
      "symbol": "CALM",
      "name": "Cal-Maine Foods",
-     "price": "83.06",
-     "change": "-1.08",
-     "percent": "-1.28",
+     "price": "79.40",
+     "change": "-3.66",
+     "percent": "-4.41",
      "dir": -1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       83.84,
       83.88,
@@ -103,17 +107,18 @@
       83.56,
       83.21,
       83.42,
-      83.06
+      83.06,
+      79.4
      ]
     },
     {
      "symbol": "TRMK",
      "name": "Trustmark",
-     "price": "46.24",
-     "change": "0.13",
-     "percent": "0.28",
-     "dir": 1,
-     "marketOpen": false,
+     "price": "46.05",
+     "change": "-0.19",
+     "percent": "-0.40",
+     "dir": -1,
+     "marketOpen": true,
      "spark": [
       46.25,
       46.2,
@@ -121,17 +126,18 @@
       46.26,
       46.22,
       46.28,
-      46.24
+      46.24,
+      46.05
      ]
     },
     {
      "symbol": "HWC",
      "name": "Hancock Whitney",
-     "price": "75.23",
-     "change": "0.57",
-     "percent": "0.76",
-     "dir": 1,
-     "marketOpen": false,
+     "price": "74.63",
+     "change": "-0.60",
+     "percent": "-0.80",
+     "dir": -1,
+     "marketOpen": true,
      "spark": [
       75.22,
       75.25,
@@ -139,17 +145,18 @@
       75.19,
       75.2,
       75.3,
-      75.23
+      75.23,
+      74.63
      ]
     },
     {
      "symbol": "ETR",
      "name": "Entergy",
-     "price": "107.23",
-     "change": "0.99",
-     "percent": "0.93",
-     "dir": 1,
-     "marketOpen": false,
+     "price": "106.56",
+     "change": "-0.67",
+     "percent": "-0.62",
+     "dir": -1,
+     "marketOpen": true,
      "spark": [
       107.09,
       106.99,
@@ -157,17 +164,18 @@
       107.05,
       106.96,
       106.95,
-      107.23
+      107.23,
+      106.56
      ]
     },
     {
      "symbol": "SO",
      "name": "Southern Company",
-     "price": "89.76",
-     "change": "-0.21",
-     "percent": "-0.23",
+     "price": "88.56",
+     "change": "-1.20",
+     "percent": "-1.33",
      "dir": -1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       90.02,
       90.08,
@@ -175,17 +183,18 @@
       89.91,
       89.83,
       89.84,
-      89.76
+      89.76,
+      88.56
      ]
     },
     {
      "symbol": "FDX",
      "name": "FedEx",
-     "price": "335.99",
-     "change": "2.28",
-     "percent": "0.68",
-     "dir": 1,
-     "marketOpen": false,
+     "price": "334.00",
+     "change": "-1.99",
+     "percent": "-0.59",
+     "dir": -1,
+     "marketOpen": true,
      "spark": [
       340.27,
       340.72,
@@ -193,7 +202,8 @@
       337.5,
       335.94,
       336.69,
-      335.99
+      335.99,
+      334.0
      ]
     }
    ]
@@ -206,113 +216,119 @@
     {
      "symbol": "AAPL",
      "name": "Apple",
-     "price": "313.45",
-     "change": "3.55",
-     "percent": "1.15",
+     "price": "314.27",
+     "change": "0.82",
+     "percent": "0.26",
      "dir": 1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       313.55,
       313.23,
       312.91,
       314.02,
       315.01,
-      313.45
+      313.45,
+      314.27
      ]
     },
     {
      "symbol": "MSFT",
      "name": "Microsoft",
-     "price": "496.37",
-     "change": "4.66",
-     "percent": "0.95",
+     "price": "501.82",
+     "change": "5.45",
+     "percent": "1.10",
      "dir": 1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       494.45,
       494.61,
       494.26,
       494.37,
       496.08,
-      496.37
+      496.37,
+      501.82
      ]
     },
     {
      "symbol": "NVDA",
      "name": "NVIDIA",
-     "price": "209.66",
-     "change": "-3.39",
-     "percent": "-1.59",
-     "dir": -1,
-     "marketOpen": false,
+     "price": "227.59",
+     "change": "17.93",
+     "percent": "8.55",
+     "dir": 1,
+     "marketOpen": true,
      "spark": [
       210.0,
       210.2,
       210.41,
       210.96,
       210.97,
-      209.66
+      209.66,
+      227.59
      ]
     },
     {
      "symbol": "AMZN",
      "name": "Amazon",
-     "price": "260.28",
-     "change": "-0.78",
-     "percent": "-0.30",
+     "price": "255.14",
+     "change": "-5.14",
+     "percent": "-1.97",
      "dir": -1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       258.7,
       259.15,
       258.55,
       259.08,
       260.08,
-      260.28
+      260.28,
+      255.14
      ]
     },
     {
      "symbol": "GOOGL",
      "name": "Alphabet",
-     "price": "342.00",
-     "change": "-4.96",
-     "percent": "-1.43",
+     "price": "340.53",
+     "change": "-1.47",
+     "percent": "-0.43",
      "dir": -1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       341.22,
       341.58,
       341.7,
       341.69,
       341.51,
-      342.0
+      342.0,
+      340.53
      ]
     },
     {
      "symbol": "JPM",
      "name": "JPMorgan Chase",
-     "price": "356.50",
-     "change": "-0.19",
-     "percent": "-0.05",
+     "price": "354.71",
+     "change": "-1.79",
+     "percent": "-0.50",
      "dir": -1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       356.61,
       357.44,
       357.15,
       356.91,
       357.78,
-      356.5
+      356.5,
+      354.71
      ]
     },
     {
      "symbol": "WMT",
      "name": "Walmart",
-     "price": "104.34",
-     "change": "-1.04",
-     "percent": "-0.99",
+     "price": "102.83",
+     "change": "-1.51",
+     "percent": "-1.45",
      "dir": -1,
-     "marketOpen": false,
+     "marketOpen": true,
      "spark": [
       104.39,
       104.66,
@@ -320,17 +336,18 @@
       104.47,
       104.6,
       104.85,
-      104.34
+      104.34,
+      102.83
      ]
     },
     {
      "symbol": "CAT",
      "name": "Caterpillar",
-     "price": "821.93",
-     "change": "10.64",
-     "percent": "1.31",
-     "dir": 1,
-     "marketOpen": false,
+     "price": "816.62",
+     "change": "-5.31",
+     "percent": "-0.65",
+     "dir": -1,
+     "marketOpen": true,
      "spark": [
       819.33,
       819.72,
@@ -338,7 +355,8 @@
       823.68,
       823.42,
       824.18,
-      821.93
+      821.93,
+      816.62
      ]
     }
    ]
