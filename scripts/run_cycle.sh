@@ -10,25 +10,28 @@
 # So the board no longer depends on that clock. Each run refreshes on a loop
 # for a few hours and then asks GitHub to start the next run. The schedule
 # trigger is left in place as a free restart if it ever starts behaving.
-
+ 
 set -uo pipefail
-
+ 
 MAX_RUN_SECONDS=${MAX_RUN_SECONDS:-14400}   # 4h, comfortably under the 6h job cap
 SLOT_SECONDS=${SLOT_SECONDS:-1200}          # 20 minutes between refreshes
 IDLE_SECONDS=${IDLE_SECONDS:-1800}          # how long to doze outside market hours
 REPO="${GITHUB_REPOSITORY:-fiserhl/else-screen}"
 START=$(date +%s)
-
+ 
 # US regular session, with a little margin, in UTC. Covers 8:30-15:00 Central
 # in both CST and CDT.
 in_window() {
   local dow hhmm
   dow=$(date -u +%u)                        # 1=Mon .. 7=Sun
-  hhmm=$(date -u +%H%M)
+  # 10# forces base ten so 0830 is not read as octal. It has to live inside
+  # $(( )): handed to [ as a string it is rejected as "not an integer", which
+  # made every run since 27 August think the market was closed.
+  hhmm=$(( 10#$(date -u +%H%M) ))
   [ "$dow" -ge 1 ] && [ "$dow" -le 5 ] || return 1
-  [ "10#$hhmm" -ge 1320 ] && [ "10#$hhmm" -le 2110 ]
+  [ "$hhmm" -ge 1320 ] && [ "$hhmm" -le 2110 ]
 }
-
+ 
 refresh() {
   if ! python3 scripts/fetch_quotes.py; then
     echo "fetch failed; keeping the previous quotes rather than blanking the board"
@@ -39,10 +42,10 @@ refresh() {
   git commit -m "quotes: $(date -u '+%Y-%m-%d %H:%M UTC')"
   git push || { git pull --rebase --autostash && git push; }
 }
-
+ 
 git config user.name  "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
+ 
 while : ; do
   if in_window; then refresh; else echo "$(date -u '+%H:%M') UTC - outside market hours"; fi
   now=$(date +%s)
@@ -55,7 +58,7 @@ while : ; do
   echo "sleeping ${nap}s"
   sleep "$nap"
 done
-
+ 
 # Hand off. Without a token this link is the last one, which is why the
 # workflow keeps the (unreliable) schedule as a fallback restart.
 if [ -z "${CHAIN_TOKEN:-}" ]; then
@@ -63,7 +66,7 @@ if [ -z "${CHAIN_TOKEN:-}" ]; then
   echo "Add a repo secret named CHAIN_TOKEN with contents:write to keep it going."
   exit 0
 fi
-
+ 
 echo "handing off to the next run"
 code=$(curl -s -o /dev/null -w '%{http_code}' -X POST \
   -H "Authorization: Bearer $CHAIN_TOKEN" \
