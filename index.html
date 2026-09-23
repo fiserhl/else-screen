@@ -1240,7 +1240,20 @@ function tkSpark(vals){
 
 function tkStamp(){
   var t = TICK.updated ? Date.parse(TICK.updated) : 0;
-  if(!t || !TICK.open || (new Date().getTime() - t) > 45 * 60 * 1000) return "At close · Delayed";
+  var now = new Date();
+  if(!t || !TICK.open || (now.getTime() - t) > 45 * 60 * 1000){
+    /* Closed-market state. If the data is from an earlier calendar day,
+       carry the date so a wall that has stopped refreshing (network gone,
+       serving the service worker's cached copy) announces it instead of
+       looking like last night's close. */
+    if(t){
+      var d = new Date(t);
+      if(d.getFullYear() !== now.getFullYear() || d.getMonth() !== now.getMonth() || d.getDate() !== now.getDate()){
+        return "At close · " + DAYS[d.getDay()].substring(0, 3) + " " + MONS[d.getMonth()].substring(0, 3) + " " + d.getDate();
+      }
+    }
+    return "At close · Delayed";
+  }
   var d = new Date(t), hh = d.getHours(), mm = d.getMinutes();
   var ap = hh >= 12 ? "PM" : "AM";
   hh = hh % 12; if(!hh) hh = 12;
@@ -1281,6 +1294,9 @@ function tkLoad(){
     return r.ok ? r.json() : null;
   }).then(function(j){
     if(!j || !j.groups || !j.groups.length){ tkShow(false); return; }
+    /* A week-old file means the refresh chain or the wall's network has
+       been dead for days. Hide the band rather than show ancient prices. */
+    if(j.updated && (new Date().getTime() - Date.parse(j.updated)) > 7 * 24 * 60 * 60 * 1000){ tkShow(false); return; }
     TICK.groups = j.groups;
     TICK.updated = j.updated || "";
     TICK.open = !!j.marketOpen;
